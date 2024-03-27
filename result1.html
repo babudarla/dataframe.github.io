@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Entry Table</title>
+</head>
+<body>
+    <form id="dataForm" action="/convert" method="POST">
+        <table border="1" id="data-table">
+            <thead>
+                <tr>
+                    <th>Age</th>
+                    <th>Sex</th>
+                    <th>Chest pain type</th>
+                    <th>BP</th>
+                    <th>Cholesterol</th>
+                    <th>FBS over 120</th>
+                    <th>EKG results</th>
+                    <th>Max HR</th>
+                    <th>Exercise angina</th>
+                    <th>ST depression</th>
+                    <th>Slope of ST</th>
+                    <th>Number of vessels fluro</th>
+                    <th>Thallium</th>
+                    <th>Heart Disease</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><input type="text" name="data['Age']" /></td>
+                    <td><input type="text" name="data['Sex']" /></td>
+                    <td><input type="text" name="data['Chest pain type']" /></td>
+                    <td><input type="text" name="data['BP']" /></td>
+                    <td><input type="text" name="data['Cholesterol']" /></td>
+                    <td><input type="text" name="data['FBS over 120']" /></td>
+                    <td><input type="text" name="data['EKG results']" /></td>
+                    <td><input type="text" name="data['Max HR']" /></td>
+                    <td><input type="text" name="data['Exercise angina']" /></td>
+                    <td><input type="text" name="data['ST depression']" /></td>
+                    <td><input type="text" name="data['Slope of ST']" /></td>
+                    <td><input type="text" name="data['Number of vessels fluro']" /></td>
+                    <td><input type="text" name="data['Thallium']" /></td>
+                    <td><input type="text" name="data['Heart Disease']" /></td>
+                </tr>
+            </tbody>
+        </table>
+        <button type="button" onclick="addRow()">Add Row</button>
+        <button type="button" onclick="addColumn()">Add Column</button>
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        function addRow() {
+            var table = document.getElementById("data-table");
+            var newRow = table.insertRow(-1);
+            var cellCount = table.rows[0].cells.length;
+            for (var i = 0; i < cellCount; i++) {
+                var cell = newRow.insertCell(i);
+                cell.innerHTML = '<input type="text" name="data[]" />';
+            }
+        }
+
+        function addColumn() {
+            var table = document.getElementById("data-table");
+            var rowCount = table.rows.length;
+            for (var i = 0; i < rowCount; i++) {
+                var newRow = table.rows[i];
+                var cell = newRow.insertCell(-1);
+                cell.innerHTML = '<input type="text" name="data[]" />';
+            }
+        }
+    </script>
+</body>
+</html>
